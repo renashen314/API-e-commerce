@@ -9,10 +9,13 @@ const app = express()
 
 const Product = require("./models/Product")
 const userRoutes = require('./routes/userRoutes');
+const productRoutes = require('./routes/productRoutes')
 
 app.use(express.json())
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: false })) //allow form interfece edit
+app.use('/api/users', userRoutes)
+app.use('/api/products', productRoutes)
 
 const PORT = process.env.PORT || 3000;
 const MONGO_URI = process.env.MONGO_URI;
@@ -34,7 +37,7 @@ app.get('/', (req, res) => {
   res.send('hello node api')
 })
 
-app.use('/api/users', userRoutes)
+
 
 app.get('/products', async (req, res) => {
   try {
