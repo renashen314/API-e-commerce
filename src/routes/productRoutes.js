@@ -10,3 +10,4 @@ router.put('/:id', authMiddleware, updateProduct)
 router.delete('/:id', authMiddleware, deleteProduct)
 
 module.exports = router
+
